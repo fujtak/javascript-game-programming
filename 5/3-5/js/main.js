@@ -6,7 +6,7 @@ let canvas = null
 let ctx = null
 
 const waveCount = 4
-const amplitude = 10
+const waveHeight = 10
 
 let baseImg = null
 let img = null
@@ -20,9 +20,12 @@ const processImg = loaded => {
   
   // 新規ラスタデータを作成
   img = ctx.createImageData(300, 300)
-  const waveFreq = Math.PI * 2 * waveCount / 300
   for(let x = 0; x < 300; ++x) {
-    const offsetY = Math.floor(Math.sin(x * waveFreq) * amplitude)
+    // x : xにおけるラジアン = 300(最大のx) : 2π * waveCount(最大のxにおけるラジアン)
+    // xにおけるラジアン = x * 2π * waveCount / 300
+    const rad = x * 2 * Math.PI * waveCount / 300
+    const s = Math.sin(rad)
+    const offsetY = Math.floor(s * waveHeight)
     for(let y = 0; y < 300; ++y) {
       const baseY = offsetY + y
       if(0 <= baseY && baseY < 300) {
