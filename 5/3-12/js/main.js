@@ -25,11 +25,10 @@ const processImg = loaded => {
   // 回転
   for(let y = 0; y < 300; ++y) {
     for(let x = 0; x < 300; ++x) {
-      // TODO: どうしてこれで回転軸が中心になるの？
-      const centerX = x - 150
-      const centerY = y - 150
-      const rotatedX = Math.floor((cos * centerX - sin * centerY) + 150)
-      const rotatedY = Math.floor((sin * centerX + cos * centerY) + 150)
+      const cX = x - 150
+      const cY = y - 150
+      const rotatedX = Math.floor((cos * cX - sin * cY) + 150)
+      const rotatedY = Math.floor((sin * cX + cos * cY) + 150)
       if(
         0 <= rotatedX && rotatedX <= 300
         && 0 <= rotatedY && rotatedY <= 300
